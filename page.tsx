@@ -1,45 +1,19 @@
+/**
+ * This route is responsible for the built-in authoring environment using Sanity Studio.
+ * All routes under your studio path is handled by this file using Next.js' catch-all routes:
+ * https://nextjs.org/docs/routing/dynamic-routes#catch-all-routes
+ *
+ * You can learn more about the next-sanity package here:
+ * https://github.com/sanity-io/next-sanity
+ */
 
-import Categories from "@/components/Categories";
-import CompanyLogo from "@/components/companyLogo";
-import Header from "@/components/Header";
-import HotProduct from "@/components/hotProducts";
-import Instagram from "@/components/Instagram";
-import Navbar from "@/components/Navbar";
-import Topbar from "@/components/Topbar";
-import SingleProductPages from "@/components/SingleProductPages"
-import Cart from "@/components/Cart"
-import Contact from "@/components/Contact"
-import Faqs from "@/components/faqs";
-import AboutSection from "@/components/aboutSection";
-import AboutPopularProduct from "@/components/aboutPopularProducts";
-import Footer from "@/components/Footer";
-import Hero from "@/components/Hero";
-import ContactSection from "@/components/contactSection";
-import ProductCards from "./Products/page";
+import { NextStudio } from 'next-sanity/studio'
+import config from '../../../../sanity.config'
 
-export default function Home() {
-  return (
-    <>
-<Topbar/>
-<Navbar/>
-<Header/>
-<Hero/>
-<CompanyLogo/>
-<ProductCards/>
-<Categories/>
-<HotProduct/>
-<Instagram/>
-<SingleProductPages/>
-<Cart/>
-<Contact/>
-<ContactSection/>
-<Faqs/>
-<AboutSection/>
-<AboutPopularProduct/>
+export const dynamic = 'force-static'
 
+export { metadata, viewport } from 'next-sanity/studio'
 
-<Footer/>
-
-    </>
-  );
+export default function StudioPage() {
+  return <NextStudio config={config} />
 }
